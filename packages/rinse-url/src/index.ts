@@ -1,1 +1,1 @@
-export * from './lib/rinse-url';
+export * from './lib/rinseURL';

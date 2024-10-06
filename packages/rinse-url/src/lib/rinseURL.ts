@@ -14,7 +14,7 @@ export interface ParsedRinseOptions {
   similarityThreshold: number;
 }
 
-export async function rinseUrl(
+export async function rinseURL(
   url: string,
   options?: RinseOptions
 ): Promise<string> {
