@@ -14,4 +14,13 @@ describe('calculateSimilarity', () => {
     const input = 'The quick brown fox jumps over the lazy dog.';
     expect(calculateSimilarity(input, input)).toEqual(1);
   });
+
+  it('should return value between 0 and 1 for strings that share some of the words.', () => {
+    const similarity = calculateSimilarity(
+      'The quick brown fox jumps over the lazy dog.',
+      'A quick star shines in night sky.'
+    );
+    expect(similarity).toBeGreaterThan(0);
+    expect(similarity).toBeLessThan(1);
+  });
 });
