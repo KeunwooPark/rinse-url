@@ -1,4 +1,5 @@
 import { getMainContent } from './getMainContent';
+import { getHTML } from './getHTML';
 
 describe('getMainContent', () => {
   it('should return the title and content of the main article.', () => {
@@ -21,9 +22,7 @@ describe('getMainContent', () => {
 
   it('should get the main content of `https://example.com/`.', async () => {
     const url = 'https://example.com/';
-    const response = await fetch(url);
-    const html = await response.text();
-
+    const html = await getHTML(url);
     const mainContent = getMainContent(html);
 
     const cleanedContent = mainContent.content.replace(/\s+/g, ' ').trim();
@@ -34,5 +33,17 @@ describe('getMainContent', () => {
       content:
         'This domain is for use in illustrative examples in documents. You may use this domain in literature without prior coordination or asking for permission. More information...',
     });
+  });
+
+  it("should get the main content of a real article's URL.", async () => {
+    const url =
+      'https://www.noahpinion.blog/p/if-this-is-a-bad-economy-please-tell?utm_source=substack&utm_medium=email';
+
+    const html = await getHTML(url);
+
+    const mainContent = getMainContent(html);
+
+    expect(mainContent.title).toBeTruthy();
+    expect(mainContent.content).toBeTruthy();
   });
 });
