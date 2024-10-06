@@ -5,4 +5,5 @@ export default {
   coverageDirectory: '../../coverage/packages/rinse-url',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   testEnvironment: 'node',
+  testTimeout: 10000,
 };

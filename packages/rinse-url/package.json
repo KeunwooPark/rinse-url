@@ -4,7 +4,8 @@
   "dependencies": {
     "@nx/rollup": "19.7.3",
     "@mozilla/readability": "^0.5.0",
-    "jsdom": "^25.0.1"
+    "jsdom": "^25.0.1",
+    "axios": "^1.7.7"
   },
   "main": "./index.cjs",
   "module": "./index.js",
