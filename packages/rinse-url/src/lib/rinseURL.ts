@@ -20,7 +20,7 @@ export async function rinseURL(
 ): Promise<string> {
   const parsedOptions = parseOptions(options || {});
   const trueHTML = await getHTML(url);
-  const trueMainContent = getMainContent(trueHTML);
+  const trueMainContent = await getMainContent(trueHTML);
 
   const testCases = getTestCases(url);
 
@@ -29,7 +29,7 @@ export async function rinseURL(
   for (const testCase of testCases) {
     const html = await getHTML(testCase.url);
     await syncWait(parsedOptions.testInterval);
-    const mainContent = getMainContent(html);
+    const mainContent = await getMainContent(html);
 
     if (mainContent.title !== trueMainContent.title) {
       continue;

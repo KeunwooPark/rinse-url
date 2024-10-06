@@ -3,7 +3,7 @@ import { getMainContent } from './getMainContent';
 import { getHTML } from './getHTML';
 
 describe('getMainContent', () => {
-  it('should return the title and content of the main article.', () => {
+  it('should return the title and content of the main article.', async () => {
     const html = `
       <html>
         <head>
@@ -15,7 +15,8 @@ describe('getMainContent', () => {
         </body>
       </html>
     `;
-    expect(getMainContent(html)).toEqual({
+    const result = await getMainContent(html);
+    expect(result).toEqual({
       title: 'Test',
       content: 'This is a test.',
     });
@@ -24,7 +25,7 @@ describe('getMainContent', () => {
   it('should get the main content of `https://example.com/`.', async () => {
     const url = 'https://example.com/';
     const html = await getHTML(url);
-    const mainContent = getMainContent(html);
+    const mainContent = await getMainContent(html);
 
     const cleanedContent = mainContent.content.replace(/\s+/g, ' ').trim();
     mainContent.content = cleanedContent;
@@ -42,7 +43,7 @@ describe('getMainContent', () => {
 
     const html = await getHTML(url);
 
-    const mainContent = getMainContent(html);
+    const mainContent = await getMainContent(html);
 
     expect(mainContent.title).toBeTruthy();
     expect(mainContent.content).toBeTruthy();

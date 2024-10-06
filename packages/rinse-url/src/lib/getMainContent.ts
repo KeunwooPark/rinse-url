@@ -1,10 +1,10 @@
 import { Readability } from '@mozilla/readability';
 import { HTMLContent } from './HTMLContent';
-import { JSDOM } from 'jsdom';
+import { htmlToDom } from './htmlToDom';
 
-export function getMainContent(html: string): HTMLContent {
-  const doc = new JSDOM(html);
-  const article = new Readability(doc.window.document).parse();
+export async function getMainContent(html: string): Promise<HTMLContent> {
+  const doc = await htmlToDom(html);
+  const article = new Readability(doc).parse();
   return {
     title: article?.title?.trim() || '',
     content: article?.textContent?.trim() || '',
