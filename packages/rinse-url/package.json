@@ -1,5 +1,5 @@
 {
-  "name": "@rinse-url/rinse-url",
+  "name": "rinse-url",
   "version": "0.0.1",
   "dependencies": {
     "@nx/rollup": "19.7.3",
