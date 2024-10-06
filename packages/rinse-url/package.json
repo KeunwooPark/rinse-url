@@ -1,7 +1,11 @@
 {
   "name": "@rinse-url/rinse-url",
   "version": "0.0.1",
-  "dependencies": {},
+  "dependencies": {
+    "@nx/rollup": "19.7.3",
+    "@mozilla/readability": "^0.5.0",
+    "jsdom": "^25.0.1"
+  },
   "main": "./index.cjs",
   "module": "./index.js",
   "private": true
