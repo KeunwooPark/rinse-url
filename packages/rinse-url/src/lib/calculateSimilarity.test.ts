@@ -1,3 +1,4 @@
+import { expect, it, describe } from '@jest/globals';
 import { calculateSimilarity } from './calculateSimilarity';
 
 describe('calculateSimilarity', () => {

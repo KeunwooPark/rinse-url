@@ -1,3 +1,4 @@
+import { expect, it, describe } from '@jest/globals';
 import { getMainContent } from './getMainContent';
 import { getHTML } from './getHTML';
 

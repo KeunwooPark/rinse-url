@@ -4,13 +4,5 @@
   "sourceRoot": "packages/rinse-url/src",
   "projectType": "library",
   "tags": [],
-  "targets": {
-    "test": {
-      "executor": "@nx/vite:test",
-      "outputs": ["{options.reportsDirectory}"],
-      "options": {
-        "reportsDirectory": "../../coverage/packages/rinse-url"
-      }
-    }
-  }
+  "targets": {}
 }
