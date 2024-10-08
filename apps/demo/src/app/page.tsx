@@ -1,5 +1,5 @@
 'use client';
-import { rinseURL } from '@rinse-url/rinse-url';
+
 import { useState } from 'react';
 
 export default function Index() {
@@ -9,7 +9,17 @@ export default function Index() {
 
   const onClick = async () => {
     setLoading(true);
-    const rinsed = await rinseURL(url);
+    setRinsed('');
+    // call post request to /api/rinse. send the url in the body.
+    const response = await fetch('/api/rinse', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ url }),
+    });
+    const data = await response.json();
+    const rinsed = data.rinsed;
     setRinsed(rinsed);
     setLoading(false);
   };
@@ -25,7 +35,20 @@ export default function Index() {
           value={url}
           onChange={(e) => setUrl(e.target.value)}
         />
-        <button className="btn btn-primary ms-3">Rinse</button>
+        <button
+          className={`btn btn-primary ms-3 ${
+            loading ? 'loading loading-spinner' : ''
+          }`}
+          onClick={onClick}
+        >
+          Rinse
+        </button>
+      </div>
+      <div className="mt-3">
+        <div>rinsed</div>
+        <a href={rinsed} target="_blank" rel="noreferrer noopener">
+          {rinsed}
+        </a>
       </div>
     </div>
   );
