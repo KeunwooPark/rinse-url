@@ -9,6 +9,7 @@ on:
 permissions:
   actions: read
   contents: read
+  id-token: write # needed for provenance data generation
 
 jobs:
   main:
