@@ -46,13 +46,8 @@ export async function rinseURL(
 
     const similarity = calculateSimilarity(mainContent, trueMainContent);
 
+    console.log(testCase.excludedParam, similarity, html);
     if (similarity >= parsedOptions.similarityThreshold) {
-      console.log(
-        testCase.excludedParam,
-        similarity,
-        mainContent,
-        trueMainContent
-      );
       paramsToExclude.push(testCase.excludedParam);
     }
   }
