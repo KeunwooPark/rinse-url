@@ -25,7 +25,7 @@ export default function Index() {
   };
 
   return (
-    <div className="m-3">
+    <div className="m-3 ">
       <h1 className="text-4xl font-bold">rinse-url demo</h1>
       <div className="mt-3">
         <input
@@ -45,8 +45,14 @@ export default function Index() {
         </button>
       </div>
       <div className="mt-3">
-        <div>rinsed</div>
-        <a href={rinsed} target="_blank" rel="noreferrer noopener">
+        <h2 className="text-2xl font-bold">Rinsed URL</h2>
+        {loading && <p className="text-gray-500">Loading...</p>}
+        <a
+          className="link"
+          href={rinsed}
+          target="_blank"
+          rel="noreferrer noopener"
+        >
           {rinsed}
         </a>
       </div>
