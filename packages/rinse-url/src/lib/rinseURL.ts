@@ -31,14 +31,7 @@ export async function rinseURL(
     await syncWait(parsedOptions.testInterval);
     const mainContent = await getMainContent(html);
 
-    if (mainContent.title !== trueMainContent.title) {
-      continue;
-    }
-
-    const similarity = calculateSimilarity(
-      mainContent.content,
-      trueMainContent.content
-    );
+    const similarity = calculateSimilarity(mainContent, trueMainContent);
 
     if (similarity >= parsedOptions.similarityThreshold) {
       paramsToExclude.push(testCase.excludedParam);
