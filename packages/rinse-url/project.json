@@ -4,5 +4,10 @@
   "sourceRoot": "packages/rinse-url/src",
   "projectType": "library",
   "tags": [],
-  "targets": {}
+  "targets": {
+    "nx-release-publish": {
+      "executor": "@nx/js:release-publish",
+      "access": "public"
+    }
+  }
 }

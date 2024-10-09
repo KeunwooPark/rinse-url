@@ -57,5 +57,8 @@
         "linter": "eslint"
       }
     }
+  },
+  "release": {
+    "projects": ["packages/*"]
   }
 }
