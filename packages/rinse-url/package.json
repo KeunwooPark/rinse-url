@@ -1,6 +1,6 @@
 {
   "name": "rinse-url",
-  "version": "0.1.1-0",
+  "version": "0.1.1-1",
   "dependencies": {
     "@nx/rollup": "19.7.3",
     "@mozilla/readability": "^0.5.0",
