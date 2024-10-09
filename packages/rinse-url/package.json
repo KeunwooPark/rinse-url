@@ -1,0 +1,13 @@
+{
+  "name": "rinse-url",
+  "version": "0.1.2-0",
+  "dependencies": {
+    "@nx/rollup": "19.7.3",
+    "@mozilla/readability": "^0.5.0",
+    "jsdom": "^25.0.1",
+    "axios": "^1.7.7"
+  },
+  "main": "./index.cjs",
+  "module": "./index.js",
+  "private": false
+}

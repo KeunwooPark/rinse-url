@@ -1,0 +1,13 @@
+{
+  "name": "rinse-url",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/rinse-url/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "nx-release-publish": {
+      "executor": "@nx/js:release-publish",
+      "access": "public"
+    }
+  }
+}
