@@ -1,6 +1,22 @@
 'use client';
 
+import { Metadata } from 'next';
 import { useState } from 'react';
+
+export const metadata: Metadata = {
+  title: 'rinse-url demo',
+  description:
+    'This tool removes unnecessary parameters, such as user-tracking codes, from a URL. In other words, for a given URL, it returns the shortest URL that has the same content.',
+  keywords: [
+    'rinse-url',
+    'rinse',
+    'url',
+    'query',
+    'parameters',
+    'tracking',
+    'utm',
+  ],
+};
 
 export default function Index() {
   const [url, setUrl] = useState('');
