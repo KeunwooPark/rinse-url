@@ -16,4 +16,10 @@ describe('rinseURL', () => {
       'https://www.noahpinion.blog/p/if-this-is-a-bad-economy-please-tell'
     );
   });
+
+  it('should remove si tags.', async () => {
+    const url = 'https://youtu.be/ElDPCKO1EhE?si=7D5DPAK4OBOL_xHq';
+    const result = await rinseURL(url);
+    expect(result).toEqual('https://youtu.be/ElDPCKO1EhE');
+  });
 });

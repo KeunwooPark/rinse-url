@@ -1,5 +1,6 @@
 'use client';
 
+import { rinseURL } from '@rinse-url/rinse-url';
 import { useState } from 'react';
 
 export default function Index() {
@@ -10,6 +11,7 @@ export default function Index() {
   const onClick = async () => {
     setLoading(true);
     setRinsed('');
+
     // call post request to /api/rinse. send the url in the body.
     const response = await fetch('/api/rinse', {
       method: 'POST',
