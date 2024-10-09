@@ -31,7 +31,7 @@ export default function Index() {
       <div className="mt-3">
         <input
           type="text"
-          placeholder="Enter a URL"
+          placeholder="https://example.com?utm_source=twitter"
           className="input input-bordered w-full max-w-md"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
