@@ -4,6 +4,10 @@ export function calculateSimilarity(a: string, b: string) {
   const tokensA = tokenize(a);
   const tokensB = tokenize(b);
 
+  if (tokensA.length === 0 || tokensB.length === 0) {
+    return 0;
+  }
+
   const totalTokens = [...tokensA, ...tokensB];
 
   const tokenSet = getUniqueTokenSet(totalTokens);
