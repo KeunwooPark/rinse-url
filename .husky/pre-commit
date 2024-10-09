@@ -1,1 +1,2 @@
 npx nx lint rinse-url --fix
+cp README.md packages/rinse-url/README.md
