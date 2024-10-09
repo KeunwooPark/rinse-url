@@ -3,7 +3,22 @@
 This is a javascript library to remove unnecessary parameters, such as user-tracking codes, from a URL.
 In other words, for a given URL, it returns the shortest URL that has the same content.
 
-It only works for Node environment.
+## How to use
+
+```javascript
+import { rinseUrl, RinseOptions } from 'rinse-url';
+
+const url = 'https://youtu.be/ElDPCKO1EhE?si=LrGi9WKADPEoF5nz';
+
+// optional
+const options: RinseOptions = {
+  testInterval: 1000, // interval to check if the content is the same
+  similarityThreshold: 0.9, // cosine similarity threshold
+};
+
+const rinsedUrl = await rinseUrl(url, options);
+console.log(rinsedUrl); // https://youtu.be/ElDPCKO1EhE
+```
 
 ## Algorithm
 
