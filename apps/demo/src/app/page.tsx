@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     'tracking',
     'utm',
   ],
+  verification: {
+    google: 'uP4A9YEesZWhynRR8HLx3OafZMvXkcbfwrt1C2TcMAo',
+  },
 };
 
 export default function Index() {
