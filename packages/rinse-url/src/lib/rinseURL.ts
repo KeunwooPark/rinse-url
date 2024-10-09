@@ -4,6 +4,12 @@ import { getMainContent } from './getMainContent';
 import { getTestCases } from './getTestCases';
 import { syncWait } from './syncWait';
 
+/**
+ * The options for the `rinseURL` function.
+ *
+ * @param testInterval The interval between each test in milliseconds. Default is `300`.
+ * @param similarityThreshold The threshold of similarity to consider the content as the same. Default is `0.9`.
+ */
 export interface RinseOptions {
   testInterval?: number;
   similarityThreshold?: number;
@@ -14,6 +20,13 @@ export interface ParsedRinseOptions {
   similarityThreshold: number;
 }
 
+/**
+ * It rinses the URL by removing the unnecessary query parameters.
+ *
+ * @param url The URL to rinse.
+ * @param options The options for the `rinseURL` function.
+ * @returns The rinsed URL.
+ */
 export async function rinseURL(
   url: string,
   options?: RinseOptions
@@ -31,14 +44,7 @@ export async function rinseURL(
     await syncWait(parsedOptions.testInterval);
     const mainContent = await getMainContent(html);
 
-    if (mainContent.title !== trueMainContent.title) {
-      continue;
-    }
-
-    const similarity = calculateSimilarity(
-      mainContent.content,
-      trueMainContent.content
-    );
+    const similarity = calculateSimilarity(mainContent, trueMainContent);
 
     if (similarity >= parsedOptions.similarityThreshold) {
       paramsToExclude.push(testCase.excludedParam);
@@ -51,7 +57,7 @@ export async function rinseURL(
 function parseOptions(options: RinseOptions): ParsedRinseOptions {
   return {
     testInterval: options.testInterval || 300,
-    similarityThreshold: options.similarityThreshold || 0.8,
+    similarityThreshold: options.similarityThreshold || 0.9,
   };
 }
 

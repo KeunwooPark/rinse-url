@@ -1,11 +1,10 @@
 {
   "name": "rinse-url",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "dependencies": {
     "@nx/rollup": "19.7.3",
-    "@mozilla/readability": "^0.5.0",
-    "jsdom": "^25.0.1",
-    "axios": "^1.7.7"
+    "axios": "^1.7.7",
+    "html-dom-parser": "^5.0.10"
   },
   "main": "./index.cjs",
   "module": "./index.js",
@@ -16,5 +15,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/KeunwooPark/rinse-url"
-  }
+  },
+  "license": "MIT"
 }

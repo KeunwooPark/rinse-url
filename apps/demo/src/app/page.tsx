@@ -10,6 +10,7 @@ export default function Index() {
   const onClick = async () => {
     setLoading(true);
     setRinsed('');
+
     // call post request to /api/rinse. send the url in the body.
     const response = await fetch('/api/rinse', {
       method: 'POST',
@@ -25,12 +26,12 @@ export default function Index() {
   };
 
   return (
-    <div className="m-3">
+    <div className="m-3 ">
       <h1 className="text-4xl font-bold">rinse-url demo</h1>
       <div className="mt-3">
         <input
           type="text"
-          placeholder="Enter a URL"
+          placeholder="https://example.com?utm_source=twitter"
           className="input input-bordered w-full max-w-md"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
@@ -45,8 +46,14 @@ export default function Index() {
         </button>
       </div>
       <div className="mt-3">
-        <div>rinsed</div>
-        <a href={rinsed} target="_blank" rel="noreferrer noopener">
+        <h2 className="text-2xl font-bold">Rinsed URL</h2>
+        {loading && <p className="text-gray-500">Loading...</p>}
+        <a
+          className="link"
+          href={rinsed}
+          target="_blank"
+          rel="noreferrer noopener"
+        >
           {rinsed}
         </a>
       </div>
