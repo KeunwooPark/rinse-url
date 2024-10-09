@@ -22,4 +22,11 @@ describe('rinseURL', () => {
     const result = await rinseURL(url);
     expect(result).toEqual('https://youtu.be/ElDPCKO1EhE');
   });
+
+  it('should not remove content related params.', async () => {
+    const url =
+      'https://www.youtube.com/watch?v=ElDPCKO1EhE&ab_channel=TW_RECORDS';
+    const result = await rinseURL(url);
+    expect(result).toEqual('https://www.youtube.com/watch?v=ElDPCKO1EhE');
+  });
 });

@@ -32,7 +32,7 @@ export async function rinseURL(
     const mainContent = await getMainContent(html);
 
     const similarity = calculateSimilarity(mainContent, trueMainContent);
-
+    console.log('smilarity', similarity);
     if (similarity >= parsedOptions.similarityThreshold) {
       paramsToExclude.push(testCase.excludedParam);
     }
@@ -44,7 +44,7 @@ export async function rinseURL(
 function parseOptions(options: RinseOptions): ParsedRinseOptions {
   return {
     testInterval: options.testInterval || 300,
-    similarityThreshold: options.similarityThreshold || 0.8,
+    similarityThreshold: options.similarityThreshold || 0.9,
   };
 }
 

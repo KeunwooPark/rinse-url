@@ -1,6 +1,5 @@
 'use client';
 
-import { rinseURL } from '@rinse-url/rinse-url';
 import { useState } from 'react';
 
 export default function Index() {
