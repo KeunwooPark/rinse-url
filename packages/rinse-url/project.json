@@ -7,7 +7,11 @@
   "targets": {
     "nx-release-publish": {
       "executor": "@nx/js:release-publish",
-      "access": "public"
+      "options": {
+        "packageRoot": "dist/packages/rinse-url",
+        "access": "public"
+      },
+      "dependsOn": ["build"]
     }
   }
 }
