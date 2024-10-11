@@ -6,7 +6,7 @@ In other words, for a given URL, it returns the shortest URL that has the same c
 ## How to use
 
 ```javascript
-import { rinseUrl, RinseOptions } from 'rinse-url';
+import { rinseURL, RinseOptions } from 'rinse-url';
 
 const url = 'https://youtu.be/ElDPCKO1EhE?si=LrGi9WKADPEoF5nz';
 
@@ -16,8 +16,8 @@ const options: RinseOptions = {
   similarityThreshold: 0.9, // cosine similarity threshold
 };
 
-const rinsedUrl = await rinseUrl(url, options);
-console.log(rinsedUrl); // https://youtu.be/ElDPCKO1EhE
+const rinsedURL = await rinseURL(url, options);
+console.log(rinsedURL); // https://youtu.be/ElDPCKO1EhE
 ```
 
 ## Algorithm
