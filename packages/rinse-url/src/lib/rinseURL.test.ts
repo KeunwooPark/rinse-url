@@ -17,11 +17,11 @@ describe('rinseURL', () => {
     );
   });
 
-  // it('should remove si tags.', async () => {
-  //   const url = 'https://youtu.be/ElDPCKO1EhE?si=7D5DPAK4OBOL_xHq';
-  //   const result = await rinseURL(url);
-  //   expect(result).toEqual('https://youtu.be/ElDPCKO1EhE');
-  // });
+  it('should remove si tags.', async () => {
+    const url = 'https://youtu.be/ElDPCKO1EhE?si=7D5DPAK4OBOL_xHq';
+    const result = await rinseURL(url);
+    expect(result).toEqual('https://youtu.be/ElDPCKO1EhE');
+  });
 
   // it('should not remove content related params.', async () => {
   //   const url =
