@@ -12,17 +12,22 @@ export default function Body() {
     setRinsed('');
 
     // call post request to /api/rinse. send the url in the body.
-    const response = await fetch('/api/rinse', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ url }),
-    });
-    const data = await response.json();
-    const rinsed = data.rinsed;
-    setRinsed(rinsed);
-    setLoading(false);
+    try {
+      const response = await fetch('/api/rinse', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ url }),
+      });
+      const data = await response.json();
+      const rinsed = data.rinsed;
+      setRinsed(rinsed);
+    } catch (error) {
+      alert('Failed to rinse the URL.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

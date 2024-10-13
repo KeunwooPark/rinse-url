@@ -76,7 +76,7 @@ describe('getMainContent', () => {
     const url =
       'https://www.noahpinion.blog/p/if-this-is-a-bad-economy-please-tell?utm_source=substack&utm_medium=email';
 
-    const html = await getHTML(url);
+    const html = await getHTML(url, 10000);
 
     const mainContent = await getMainContent(html);
 
