@@ -9,15 +9,18 @@ import { syncWait } from './syncWait';
  *
  * @param testInterval The interval between each test in milliseconds. Default is `300`.
  * @param similarityThreshold The threshold of similarity to consider the content as the same. Default is `0.9`.
+ * @param timeout The timeout for each test in milliseconds. Default is `10000`.
  */
 export interface RinseOptions {
   testInterval?: number;
   similarityThreshold?: number;
+  timeout?: number;
 }
 
 export interface ParsedRinseOptions {
   testInterval: number;
   similarityThreshold: number;
+  timeout: number;
 }
 
 /**
@@ -32,7 +35,7 @@ export async function rinseURL(
   options?: RinseOptions
 ): Promise<string> {
   const parsedOptions = parseOptions(options || {});
-  const trueHTML = await getHTML(url);
+  const trueHTML = await getHTML(url, parsedOptions.timeout);
   const trueMainContent = await getMainContent(trueHTML);
 
   const testCases = getTestCases(url);
@@ -40,7 +43,7 @@ export async function rinseURL(
   const paramsToExclude: string[] = [];
 
   for (const testCase of testCases) {
-    const html = await getHTML(testCase.url);
+    const html = await getHTML(testCase.url, parsedOptions.timeout);
     await syncWait(parsedOptions.testInterval);
     const mainContent = await getMainContent(html);
 
@@ -58,6 +61,7 @@ function parseOptions(options: RinseOptions): ParsedRinseOptions {
   return {
     testInterval: options.testInterval || 300,
     similarityThreshold: options.similarityThreshold || 0.9,
+    timeout: options.timeout || 10000,
   };
 }
 
