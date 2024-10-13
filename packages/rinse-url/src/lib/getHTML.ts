@@ -11,6 +11,7 @@ export async function getHTML(url: string, timeout: number): Promise<string> {
       Referer: 'https://www.google.com/',
       Connection: 'keep-alive',
     },
+    maxRedirects: 5,
   });
   if (response.status !== 200) {
     throw new Error(`Failed to fetch the URL: ${url}`);
