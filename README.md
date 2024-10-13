@@ -20,6 +20,12 @@ const rinsedURL = await rinseURL(url, options);
 console.log(rinsedURL); // https://youtu.be/ElDPCKO1EhE
 ```
 
+### Options
+
+- `testInterval`: Interval to check if the content is the same. Default is 300ms.
+- `similarityThreshold`: Cosine similarity threshold. Default is 0.9.
+- `timeout`: The timeout for each test in milliseconds. Default is 10000ms.
+
 ## Algorithm
 
 `rinse-url` finds URL parameters that doesn't affect the content of the page and removes them.
