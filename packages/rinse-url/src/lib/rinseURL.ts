@@ -23,6 +23,12 @@ export interface ParsedRinseOptions {
   timeout: number;
 }
 
+export const DefaultRinseOptions: ParsedRinseOptions = {
+  testInterval: 300,
+  similarityThreshold: 0.9,
+  timeout: 10000,
+};
+
 /**
  * It rinses the URL by removing the unnecessary query parameters.
  *
@@ -59,9 +65,10 @@ export async function rinseURL(
 
 function parseOptions(options: RinseOptions): ParsedRinseOptions {
   return {
-    testInterval: options.testInterval || 300,
-    similarityThreshold: options.similarityThreshold || 0.9,
-    timeout: options.timeout || 10000,
+    testInterval: options.testInterval || DefaultRinseOptions.testInterval,
+    similarityThreshold:
+      options.similarityThreshold || DefaultRinseOptions.similarityThreshold,
+    timeout: options.timeout || DefaultRinseOptions.timeout,
   };
 }
 

@@ -1,11 +1,14 @@
 'use client';
 
+import { DefaultRinseOptions } from '@rinse-url/rinse-url';
 import { useState } from 'react';
+import OptionInput from '../components/OptionInput';
 
 export default function Body() {
   const [url, setUrl] = useState('');
   const [rinsed, setRinsed] = useState('');
   const [loading, setLoading] = useState(false);
+  const [options, setOptions] = useState(DefaultRinseOptions);
 
   const onClick = async () => {
     setLoading(true);
@@ -18,13 +21,14 @@ export default function Body() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ url }),
+        body: JSON.stringify({ url, options }),
       });
       const data = await response.json();
       const rinsed = data.rinsed;
       setRinsed(rinsed);
-    } catch (error) {
-      alert('Failed to rinse the URL.');
+    } catch (error: unknown) {
+      const e = error as Error;
+      alert('Failed to rinse the URL. error: ' + e.message);
     } finally {
       setLoading(false);
     }
@@ -49,6 +53,30 @@ export default function Body() {
         >
           Rinse
         </button>
+      </div>
+      <div>
+        <h2 className="text-2xl mt-3 font-bold">Options</h2>
+        <div className="mt-3">
+          <OptionInput
+            label={'test interval (ms)'}
+            onChange={(value) =>
+              setOptions({ ...options, testInterval: value })
+            }
+            value={options.testInterval}
+          />
+          <OptionInput
+            label={'similarity threshold (0-1)'}
+            onChange={(value) =>
+              setOptions({ ...options, similarityThreshold: value })
+            }
+            value={options.similarityThreshold}
+          />
+          <OptionInput
+            label={'timeout (ms)'}
+            onChange={(value) => setOptions({ ...options, timeout: value })}
+            value={options.timeout}
+          />
+        </div>
       </div>
       <div className="mt-3">
         <h2 className="text-2xl font-bold">Rinsed URL</h2>
